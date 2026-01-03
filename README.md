@@ -2,7 +2,7 @@
 
 **Semestre:** I Semestre, 2026
 
-**Estudiante:** Geovan
+**Estudiante:** Geovanni González Aguilar
 
 **Estatus de la entrega:** Excelente
 

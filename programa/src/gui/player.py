@@ -37,11 +37,29 @@ class NewGameFrame(tk.Frame):
                        bg=COLORS['BG_MAIN'], fg=COLORS['TEXT'], font=FONTS['BODY'],
                        selectcolor=COLORS['BG_MAIN'], activebackground=COLORS['BG_MAIN']).pack(pady=5)
         
-        tk.Button(self, text=get_msg('BTN_PLAY'), command=self.start_game, width=20, height=2,
+        tk.Button(self, text=get_msg('BTN_PLAY'), command=self.start_game, width=30, height=2,
                   bg=COLORS['BTN_PRIMARY'], fg='white', font=FONTS['BODY_BOLD'], relief='flat').pack(pady=20)
                   
         tk.Button(self, text=get_msg('BACK_BTN'), command=lambda: controller.show_frame("MainMenu"),
-                  bg=COLORS['BTN_BG'], fg=COLORS['BTN_FG'], font=FONTS['BODY'], relief='flat').pack()
+                  bg=COLORS['BTN_BG'], fg=COLORS['BTN_FG'], font=FONTS['BODY'], relief='flat', width=30, height=2).pack()
+
+    # ... (rest of NewGameFrame omitted, jumping to GameFrame.draw_hangman)
+
+    def draw_hangman(self):
+        self.canvas.delete("all")
+        # Gallows in Highlight (Cyan)
+        self.canvas.create_line(50, 250, 250, 250, width=4, fill=COLORS['HIGHLIGHT'])
+        self.canvas.create_line(150, 250, 150, 50, width=4, fill=COLORS['HIGHLIGHT'])
+        self.canvas.create_line(150, 50, 200, 50, width=4, fill=COLORS['HIGHLIGHT'])
+        self.canvas.create_line(200, 50, 200, 80, width=4, fill=COLORS['HIGHLIGHT'])
+        
+        # Body in Text/Error (White/Red)
+        if self.wrong > 0: self.canvas.create_oval(180, 80, 220, 120, width=4, outline=COLORS['TEXT']) # Head
+        if self.wrong > 1: self.canvas.create_line(200, 120, 200, 190, width=4, fill=COLORS['TEXT']) # Body
+        if self.wrong > 2: self.canvas.create_line(200, 140, 170, 170, width=4, fill=COLORS['TEXT']) # Left Arm
+        if self.wrong > 3: self.canvas.create_line(200, 140, 230, 170, width=4, fill=COLORS['TEXT']) # Right Arm
+        if self.wrong > 4: self.canvas.create_line(200, 190, 170, 220, width=4, fill=COLORS['TEXT']) # Left Leg
+        if self.wrong > 5: self.canvas.create_line(200, 190, 230, 220, width=4, fill=COLORS['ERROR']) # Right Leg (Death)
 
     def update_lang(self):
         new_lang = self.lang_var.get()

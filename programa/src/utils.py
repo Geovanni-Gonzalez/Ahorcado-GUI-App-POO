@@ -19,31 +19,31 @@ FILES = {
 CURRENT_LANG = 'ES'
 SOUND_ON = True
 
-# Colors (Modern Flat Design)
+# Colors (Modern Dark Theme - Cyberpunk/Slate)
 COLORS = {
-    'BG_MAIN': '#F5F7FA',       # Light Blue-Gray for background
-    'BG_GAME': '#FFFFFF',       # White for game area/cards
-    'BG_CARD': '#FFFFFF',
-    'TEXT': '#2C3E50',          # Dark Blue-Gray for main text
-    'TEXT_LIGHT': '#7F8C8D',    # Grey for secondary text
-    'HIGHLIGHT': '#3498DB',     # Bright Blue (Primary)
-    'HIGHLIGHT_DARK': '#2980B9',# Darker blue for active state
-    'ERROR': '#E74C3C',         # Red
-    'SUCCESS': '#2ECC71',       # Green
-    'ACCENT': '#F1C40F',        # Yellow/Orange for hints
-    'BTN_BG': '#34495E',        # Dark Grey for secondary buttons
-    'BTN_FG': '#ECF0F1',        # White text
-    'BTN_PRIMARY': '#3498DB'
+    'BG_MAIN': '#0F172A',       # Deep Slate
+    'BG_GAME': '#1E293B',       # Lighter Slate for cards/areas
+    'BG_CARD': '#1E293B',       # Surface color
+    'TEXT': '#F8FAFC',          # Off-white text
+    'TEXT_LIGHT': '#94A3B8',    # Muted Blue-Grey
+    'HIGHLIGHT': '#00E5FF',     # Neon Cyan (Primary)
+    'HIGHLIGHT_DARK': '#00B8D4',# Darker Cyan
+    'ERROR': '#FF1744',         # Bright Red
+    'SUCCESS': '#00E676',       # Bright Green
+    'ACCENT': '#F50057',        # Neon Pink for hints/accents
+    'BTN_BG': '#334155',        # Slate for secondary buttons
+    'BTN_FG': '#F8FAFC',        # White text
+    'BTN_PRIMARY': '#00E5FF'    # Cyan for primary buttons
 }
 
 # Fonts
 FONTS = {
-    'TITLE': ("Helvetica", 28, "bold"),
-    'HEADER': ("Helvetica", 18, "bold"),
-    'BODY': ("Helvetica", 12),
-    'BODY_BOLD': ("Helvetica", 12, "bold"),
-    'MONO': ("Consolas", 24, "bold"), # For the secret word
-    'SMALL': ("Helvetica", 10)
+    'TITLE': ("Segoe UI", 32, "bold"),
+    'HEADER': ("Segoe UI", 20, "bold"),
+    'BODY': ("Segoe UI", 12),
+    'BODY_BOLD': ("Segoe UI", 12, "bold"),
+    'MONO': ("Consolas", 28, "bold"), 
+    'SMALL': ("Segoe UI", 10)
 }
 
 # Strings

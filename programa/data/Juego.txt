@@ -1,1 +1,2 @@
 1, Geovanni Gonzalez, Principiante, PUERTA, 6, ["C", "A", "S", "E", "M", "L", "Q", "O"], perdedor, 03/01/2026, 11:11 am, 00:00:16
+2, Geo, Principiante, CASA, 0, [], time_out, 03/01/2026, 11:50 am, 00:01:00

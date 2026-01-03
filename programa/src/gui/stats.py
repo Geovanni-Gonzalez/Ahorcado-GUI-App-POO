@@ -32,14 +32,14 @@ class StatsFrame(tk.Frame):
         win_angle = (w / total) * 360
         self.canvas.create_arc(50, 50, 250, 250, start=start_angle, extent=win_angle, fill=COLORS['SUCCESS'])
         if w > 0:
-            self.canvas.create_text(280, 100, text=f"Won: {w}", fill='green', anchor="w")
+            self.canvas.create_text(280, 100, text=f"Won: {w}", fill=COLORS['SUCCESS'], anchor="w", font=FONTS['BODY_BOLD'])
         
         # Lose Slice
         start_angle += win_angle
         lose_angle = (l / total) * 360
         self.canvas.create_arc(50, 50, 250, 250, start=start_angle, extent=lose_angle, fill=COLORS['ERROR'])
         if l > 0:
-            self.canvas.create_text(280, 200, text=f"Lost: {l}", fill='red', anchor="w")
+            self.canvas.create_text(280, 200, text=f"Lost: {l}", fill=COLORS['ERROR'], anchor="w", font=FONTS['BODY_BOLD'])
             
     def refresh(self):
         games = read_file_lines(FILES['JUEGO'])

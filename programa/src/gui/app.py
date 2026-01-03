@@ -34,26 +34,38 @@ class App(tk.Tk):
     def create_frames(self):
         # Helper for styled buttons
         def create_btn(parent, text, cmd):
-            return HoverButton(parent, text=text, width=25, height=1, 
+            return HoverButton(parent, text=text, width=30, height=2, 
                              command=cmd, bg=COLORS['BTN_BG'], fg=COLORS['BTN_FG'],
-                             font=FONTS['BODY'], relief='flat', activebackground=COLORS['HIGHLIGHT_DARK'])
+                             font=FONTS['BODY_BOLD'], relief='flat', activebackground=COLORS['HIGHLIGHT_DARK'])
 
         # Main Menu Frame
         mm = tk.Frame(self.container, bg=COLORS['BG_MAIN'])
-        tk.Label(mm, text=get_msg('MAIN_MENU'), font=FONTS['TITLE'], bg=COLORS['BG_MAIN'], fg=COLORS['TEXT']).pack(pady=40)
         
-        create_btn(mm, get_msg('K_ADMIN'), self.req_login).pack(pady=10)
-        create_btn(mm, get_msg('K_PLAYER'), lambda: self.show_frame("PlayerMenu")).pack(pady=10)
+        # Banner / Header
+        header_frame = tk.Frame(mm, bg=COLORS['BG_CARD'], pady=20)
+        header_frame.pack(fill='x', pady=(0, 40))
+        tk.Label(header_frame, text=get_msg('MAIN_MENU'), font=FONTS['TITLE'], 
+                 bg=COLORS['BG_CARD'], fg=COLORS['HIGHLIGHT']).pack()
+        
+        # Content centered
+        content = tk.Frame(mm, bg=COLORS['BG_MAIN'])
+        content.pack(expand=True)
+        
+        create_btn(content, get_msg('K_ADMIN'), self.req_login).pack(pady=15)
+        create_btn(content, get_msg('K_PLAYER'), lambda: self.show_frame("PlayerMenu")).pack(pady=15)
         
         # Exit button with simpler style or same?
-        # Exit button with simpler style or same?
-        tk.Button(mm, text=get_msg('K_EXIT'), width=25, height=1, command=self.quit,
-                  bg=COLORS['ERROR'], fg='white', font=FONTS['BODY'], relief='flat').pack(pady=10)
+        tk.Button(content, text=get_msg('K_EXIT'), width=30, height=2, command=self.quit,
+                  bg=COLORS['ERROR'], fg='white', font=FONTS['BODY_BOLD'], relief='flat').pack(pady=15)
+        
+        # Footer
+        tk.Label(mm, text="v2.0 | Created by Geovanni González A.", font=FONTS['SMALL'], 
+                 bg=COLORS['BG_MAIN'], fg=COLORS['TEXT_LIGHT']).pack(side='bottom', pady=10)
         
         # Sound Toggle
         self.btn_sound = tk.Button(mm, text="🔊 Sound: ON", command=self.toggle_app_sound,
-                                   bg=COLORS['BG_MAIN'], fg=COLORS['TEXT'], font=FONTS['SMALL'], relief='flat')
-        self.btn_sound.place(relx=0.9, rely=0.05, anchor='ne') # Top right corner
+                                   bg=COLORS['BG_MAIN'], fg=COLORS['ACCENT'], font=FONTS['SMALL'], relief='flat')
+        self.btn_sound.place(relx=0.95, rely=0.95, anchor='se') # Bottom right corner
                   
         self.frames["MainMenu"] = mm
         mm.grid(row=0, column=0, sticky="nsew")
