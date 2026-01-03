@@ -1,0 +1,13 @@
+Ayuda del Juego
+
+Instrucciones:
+1.  Nuevo Juego: Selecciona tu nivel (Principiante para palabras, Avanzado para frases).
+2.  Juego:
+    -   Usa el teclado en pantalla o tu teclado físico para adivinar letras.
+    -   Tienes 6 intentos antes de perder.
+    -   Puedes usar el botón "Pista" a cambio de puntos.
+3.  Modos Especiales:
+    -   Blitz: ¡Termina antes de que el tiempo se agote!
+    -   Duelo: Reta a un amigo en la misma PC.
+4.  Administración:
+    -   Usa la contraseña 'admin123' para gestionar palabras y frases.

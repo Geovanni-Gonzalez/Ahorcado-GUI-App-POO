@@ -1,0 +1,6 @@
+Historia del Juego del Ahorcado
+
+El juego del ahorcado es uno de los juegos de palabras más antiguos y conocidos. Aunque su origen exacto es incierto, se cree que data de la época victoriana en el siglo XIX. 
+Originalmente se jugaba con papel y lápiz. El objetivo es simple: adivinar una palabra secreta letra por letra antes de que se complete el dibujo de un hombre ahorcado.
+
+En esta versión digital, hemos adaptado la experiencia para la era moderna, utilizando tecnología Python y Tkinter.
