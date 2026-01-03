@@ -75,19 +75,7 @@ class App(tk.Tk):
 
     # ... (rest of methods) ...
 
-    def toggle_app_sound(self):
-        is_on = toggle_sound()
-        txt = "🔊 Sound: ON" if is_on else "🔇 Sound: OFF"
-        self.btn_sound.config(text=txt)
 
-    def toggle_theme(self):
-        new_theme = toggle_theme_logic()
-        self.refresh_all()
-        # Refresh all destroys MainMenu too, so we are back at new game or wherever show_frame calls.
-        # Ideally we want to stay on main menu?
-        # refresh_all goes to "NewGameFrame" by default in my previous code?
-        # I should check refresh_all logic.
-        self.show_frame("MainMenu")
         
         # Player Menu
         pm = tk.Frame(self.container, bg=COLORS['BG_MAIN'])
@@ -169,3 +157,8 @@ class App(tk.Tk):
         is_on = toggle_sound()
         txt = "🔊 Sound: ON" if is_on else "🔇 Sound: OFF"
         self.btn_sound.config(text=txt)
+
+    def toggle_theme(self):
+        new_theme = toggle_theme_logic()
+        self.refresh_all()
+        self.show_frame("MainMenu")

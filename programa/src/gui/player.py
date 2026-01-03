@@ -68,6 +68,10 @@ class NewGameFrame(tk.Frame):
         if self.wrong > 5: self.canvas.create_line(200, 190, 230, 220, width=4, fill=COLORS['ERROR']) # Right Leg (Death)
 
     def update_lang(self):
+        # Guard against premature triggering during initialization
+        if "NewGameFrame" not in self.controller.frames:
+            return
+            
         new_lang = self.lang_var.get()
         set_lang(new_lang)
         self.controller.refresh_all()
