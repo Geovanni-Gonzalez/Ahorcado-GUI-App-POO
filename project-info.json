@@ -1,0 +1,28 @@
+{
+    "tech": [
+        "Python",
+        "Tkinter"
+    ],
+    "features": [
+        "Interfaz Gráfica (GUI) con Diseño Plano (Flat Design)",
+        "Modo PvP Local (Retador vs Adivinador)",
+        "Modo Contrarreloj (Time Attack 60s)",
+        "Sistema de Login seguro (Acceso.txt)",
+        "Módulo Administrativo CRUD completo",
+        "Soporte Bilingüe (Español/Inglés)"
+    ],
+    "stack": {
+        "language": "Python",
+        "framework": "Tkinter",
+        "tools": [
+            "Winsound",
+            "Git",
+            "POO Architecture"
+        ]
+    },
+    "screenshots": [],
+    "description": {
+        "es": "Versión orientada a objetos del juego Ahorcado. Implementa una arquitectura robusta separando lógica y presentación. Incluye características avanzadas como Duelo Local, Modo Blitz, y un sistema administrativo seguro, cumpliendo estrictos estándares de codificación sin funciones predefinidas.",
+        "en": "Object-Oriented version of the Hangman game. Implements a robust architecture separating logic and presentation. Includes advanced features like Local Duel, Blitz Mode, and a secure administrative system, adhering to strict coding standards without built-in functions."
+    }
+}

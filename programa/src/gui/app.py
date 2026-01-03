@@ -46,8 +46,14 @@ class App(tk.Tk):
         create_btn(mm, get_msg('K_PLAYER'), lambda: self.show_frame("PlayerMenu")).pack(pady=10)
         
         # Exit button with simpler style or same?
+        # Exit button with simpler style or same?
         tk.Button(mm, text=get_msg('K_EXIT'), width=25, height=1, command=self.quit,
                   bg=COLORS['ERROR'], fg='white', font=FONTS['BODY'], relief='flat').pack(pady=10)
+        
+        # Sound Toggle
+        self.btn_sound = tk.Button(mm, text="🔊 Sound: ON", command=self.toggle_app_sound,
+                                   bg=COLORS['BG_MAIN'], fg=COLORS['TEXT'], font=FONTS['SMALL'], relief='flat')
+        self.btn_sound.place(relx=0.9, rely=0.05, anchor='ne') # Top right corner
                   
         self.frames["MainMenu"] = mm
         mm.grid(row=0, column=0, sticky="nsew")
@@ -127,3 +133,8 @@ class App(tk.Tk):
                 self.show_frame("AdminFrame")
             else:
                 messagebox.showerror(get_msg('MSG_ERROR'), "Access Denied")
+
+    def toggle_app_sound(self):
+        is_on = toggle_sound()
+        txt = "🔊 Sound: ON" if is_on else "🔇 Sound: OFF"
+        self.btn_sound.config(text=txt)

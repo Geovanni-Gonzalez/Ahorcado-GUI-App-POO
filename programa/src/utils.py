@@ -17,6 +17,7 @@ FILES = {
 
 # Global State
 CURRENT_LANG = 'ES'
+SOUND_ON = True
 
 # Colors (Modern Flat Design)
 COLORS = {
@@ -156,11 +157,18 @@ STRINGS = {
 }
 
 # Custom Helpers
+def toggle_sound():
+    global SOUND_ON
+    SOUND_ON = not SOUND_ON
+    return SOUND_ON
+
 def play_sound(sound_type):
     """
     Plays a system sound based on type.
     Types: 'click', 'correct', 'error', 'win', 'lose'
     """
+    if not SOUND_ON: return
+    
     try:
         import winsound
         if sound_type == 'click':

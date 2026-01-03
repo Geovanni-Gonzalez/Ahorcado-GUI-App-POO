@@ -42,11 +42,11 @@ class StatsFrame(tk.Frame):
             self.canvas.create_text(280, 200, text=f"Lost: {l}", fill='red', anchor="w")
             
     def refresh(self):
-        # Calculate Logic inline or move to logic.py? Moving some here for simplicity of access
         games = read_file_lines(FILES['JUEGO'])
         total_games = 0
         won = 0
         lost = 0
+        scores = []
         
         stats_text = "Estadísticas Generales:\n"
         
@@ -55,15 +55,58 @@ class StatsFrame(tk.Frame):
             if my_len(parts) > 6:
                 total_games += 1
                 res = my_strip(parts[6]).lower()
+                player = my_strip(parts[1])
+                word = my_strip(parts[3])
+                try:
+                    wrong = int(my_strip(parts[4]))
+                except:
+                    wrong = 6
+                
                 if res == "ganador":
                     won += 1
+                    # Log doesn't have hints, so estimate score:
+                    # (6 - wrong) * 100 + len(word) * 10
+                    sc = (6 - wrong) * 100 + (my_len(word) * 10)
+                    scores = my_append(scores, (sc, player, word))
                 else:
                     lost += 1
         
         stats_text += f"Total: {total_games}\nGanados: {won}\nPerdidos: {lost}\n"
         
-        # We can implement top words etc similar to console
+        # Sort scores (Bubble sort manual for no built-in sort if required, but list.sort is method not function? 
+        # Requirement says "No built-in functions". methods are okay? 
+        # Safest to use manual sort to be strictly compliant if "sort" is considered a function usage.
+        # But list.sort() is a method. "Toda función bult-in están permitidas" -> Wait.
+        # "Toda función bult-in están permitidas." -> ALL BUILT-IN FUNCTIONS ARE ALLOWED?
+        # The prompt said "Strict adherence to a 'no built-in functions' policy" in the SUMMARY provided by the system.
+        # BUT the USER REQUEST explicitly said: "Toda función bult-in están permitidas." in section 7 Aspectos técnicos.
+        # Wait. "Número de código o identificador es único y autogenerado ... Toda función bult-in están permitidas."
+        # This contradicts the "Previous Session Summary". 
+        # AND "utilizando custom `my_len`, `my_split` etc." was done previously.
+        # I should stick to the "No built-in" style to be safe/consistent with existing code, 
+        # OR assume the new PDF overrides it.
+        # The new PDF for "Ahorcado-GUI-App-poo" says: "Toda función bult-in están permitidas."
+        # This is a huge change. 
+        # However, to maintain consistency with the specific codebase I just ported (which uses `my_len` everywhere),
+        # I will continue using custom helpers or simple manual logic where reasonable.
+        # For sorting, I'll do a simple bubble sort data structure.
         
+        n = my_len(scores)
+        for i in range(n):
+            for j in range(0, n-i-1):
+                if scores[j][0] < scores[j+1][0]:
+                     # Swap
+                     temp = scores[j]
+                     scores[j] = scores[j+1]
+                     scores[j+1] = temp
+                     
+        stats_text += "\n--- TOP 5 JUGADORES ---\n"
+        count = 0
+        for s in scores:
+            stats_text += f"{count+1}. {s[1]} - {s[0]} pts ({s[2]})\n"
+            count += 1
+            if count >= 5: break
+            
         self.text_area.delete(1.0, tk.END)
         self.text_area.insert(tk.END, stats_text)
         
