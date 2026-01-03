@@ -20,7 +20,8 @@
             "POO Architecture"
         ]
     },
-    "screenshots": [],
+    "screenshots": ["https://raw.githubusercontent.com/Geovanni-González/Ahorcado-GUI-App-POO/main/screenshots/principalImage.jpg"],
+
     "description": {
         "es": "Versión orientada a objetos del juego Ahorcado. Implementa una arquitectura robusta separando lógica y presentación. Incluye características avanzadas como Duelo Local, Modo Blitz, y un sistema administrativo seguro, cumpliendo estrictos estándares de codificación sin funciones predefinidas.",
         "en": "Object-Oriented version of the Hangman game. Implements a robust architecture separating logic and presentation. Includes advanced features like Local Duel, Blitz Mode, and a secure administrative system, adhering to strict coding standards without built-in functions."
