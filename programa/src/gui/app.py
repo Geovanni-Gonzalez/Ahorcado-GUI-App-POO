@@ -58,10 +58,13 @@ class App(tk.Tk):
         tk.Button(content, text=get_msg('K_EXIT'), width=30, height=2, command=self.quit,
                   bg=COLORS['ERROR'], fg='white', font=FONTS['BODY_BOLD'], relief='flat').pack(pady=15)
         
-        # Footer
-        tk.Label(mm, text="v2.0 | Created by Geovanni González A.", font=FONTS['SMALL'], 
-                 bg=COLORS['BG_MAIN'], fg=COLORS['TEXT_LIGHT']).pack(side='bottom', pady=10)
-        
+        # Theme Toggle
+        cur_theme = get_current_theme()
+        theme_icon = "🌙" if cur_theme == 'DARK' else "☀️" # Sun/Moon
+        self.btn_theme = tk.Button(mm, text=f"{theme_icon} Theme", command=self.toggle_theme,
+                                   bg=COLORS['BG_MAIN'], fg=COLORS['ACCENT'], font=FONTS['SMALL'], relief='flat')
+        self.btn_theme.place(relx=0.82, rely=0.95, anchor='se')
+
         # Sound Toggle
         self.btn_sound = tk.Button(mm, text="🔊 Sound: ON", command=self.toggle_app_sound,
                                    bg=COLORS['BG_MAIN'], fg=COLORS['ACCENT'], font=FONTS['SMALL'], relief='flat')
@@ -69,6 +72,22 @@ class App(tk.Tk):
                   
         self.frames["MainMenu"] = mm
         mm.grid(row=0, column=0, sticky="nsew")
+
+    # ... (rest of methods) ...
+
+    def toggle_app_sound(self):
+        is_on = toggle_sound()
+        txt = "🔊 Sound: ON" if is_on else "🔇 Sound: OFF"
+        self.btn_sound.config(text=txt)
+
+    def toggle_theme(self):
+        new_theme = toggle_theme_logic()
+        self.refresh_all()
+        # Refresh all destroys MainMenu too, so we are back at new game or wherever show_frame calls.
+        # Ideally we want to stay on main menu?
+        # refresh_all goes to "NewGameFrame" by default in my previous code?
+        # I should check refresh_all logic.
+        self.show_frame("MainMenu")
         
         # Player Menu
         pm = tk.Frame(self.container, bg=COLORS['BG_MAIN'])

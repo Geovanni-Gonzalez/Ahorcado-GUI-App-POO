@@ -37,6 +37,12 @@ class NewGameFrame(tk.Frame):
                        bg=COLORS['BG_MAIN'], fg=COLORS['TEXT'], font=FONTS['BODY'],
                        selectcolor=COLORS['BG_MAIN'], activebackground=COLORS['BG_MAIN']).pack(pady=5)
         
+        # Hardcore Mode
+        self.hardcore_var = tk.BooleanVar(value=False)
+        tk.Checkbutton(self, text="🔥 Hardcore (3 Lives, 2x Pts)", variable=self.hardcore_var,
+                       bg=COLORS['BG_MAIN'], fg=COLORS['ERROR'], font=FONTS['BODY_BOLD'],
+                       selectcolor=COLORS['BG_MAIN'], activebackground=COLORS['BG_MAIN']).pack(pady=5)
+        
         tk.Button(self, text=get_msg('BTN_PLAY'), command=self.start_game, width=30, height=2,
                   bg=COLORS['BTN_PRIMARY'], fg='white', font=FONTS['BODY_BOLD'], relief='flat').pack(pady=20)
                   
@@ -77,6 +83,7 @@ class NewGameFrame(tk.Frame):
         mode_str = self.mode_var.get()
         is_beg = (mode_str == get_msg('MODE_BEG'))
         use_timer = self.timer_var.get()
+        is_hardcore = self.hardcore_var.get()
         
         filepath = FILES['PALABRAS'] if is_beg else FILES['FRASES']
         lines = read_file_lines(filepath)
@@ -89,7 +96,7 @@ class NewGameFrame(tk.Frame):
         target = my_strip(parts[1]).upper()
         
         game_frame = self.controller.frames["GameFrame"]
-        game_frame.setup_game(name, mode_str, target, use_timer)
+        game_frame.setup_game(name, mode_str, target, use_timer, is_hardcore)
         self.controller.show_frame("GameFrame")
 
 class PvPSetupFrame(tk.Frame):
@@ -194,26 +201,30 @@ class GameFrame(tk.Frame):
                   bg=COLORS['ERROR'], fg='white', font=FONTS['BODY'], relief='flat').pack(pady=10)
         
     def handle_keypress(self, event):
-        if self.wrong >= 6: return # Game over
+        max_wrong = 3 if self.is_hardcore else 6
+        if self.wrong >= max_wrong: return # Game over
         char = event.char.upper()
         if 'A' <= char <= 'Z' or char == 'Ñ':
             # Check if button enabled (not guessed yet)
             if char in self.buttons and self.buttons[char]['state'] == tk.NORMAL:
                 self.guess(char)
 
-    def setup_game(self, player, mode, target, use_timer=False):
+    def setup_game(self, player, mode, target, use_timer=False, is_hardcore=False):
         self.player = player
         self.mode = mode
         self.target = target
         self.use_timer = use_timer
+        self.is_hardcore = is_hardcore
         self.guessed = []
         self.wrong = 0
         self.hints = 0
         self.start_time = datetime.datetime.now()
-        self.timer_val = 60 # Seconds
+        self.timer_val = 60 
         self.timer_running = False
         
         self.lbl_timer.config(text="")
+        if self.is_hardcore:
+             self.lbl_timer.config(text="🔥 HARDCORE MODE 🔥", fg=COLORS['ERROR'])
         
         self.btn_hint.config(text=get_msg('HINT_BTN'), state=tk.NORMAL)
         
@@ -271,14 +282,25 @@ class GameFrame(tk.Frame):
         
         self.lbl_word.config(text=display)
         
-        score_calc = ((6 - self.wrong) * 100) + (my_len(self.target) * 10) - (self.hints * 50)
+        max_wrong = 3 if self.is_hardcore else 6
+        multiplier = 2 if self.is_hardcore else 1
+        
+        score_calc = (((6 - self.wrong) * 100) + (my_len(self.target) * 10) - (self.hints * 50)) * multiplier
         if score_calc < 0: score_calc = 0
         
-        self.lbl_info.config(text=f"{self.player} | {get_msg('ATTEMPTS_LBL')} {6 - self.wrong} | {get_msg('SCORE_LBL')} {score_calc}")
+        lives = max_wrong - self.wrong
+        lbl_text = f"{self.player} | "
+        if self.is_hardcore:
+             lbl_text += f"Lives: {lives} | "
+        else:
+             lbl_text += f"{get_msg('ATTEMPTS_LBL')} {lives} | "
+             
+        lbl_text += f"{get_msg('SCORE_LBL')} {score_calc}"
+        self.lbl_info.config(text=lbl_text)
         
         if done:
             self.end_game("ganador")
-        elif self.wrong >= 6:
+        elif self.wrong >= max_wrong:
             self.end_game("perdedor")
             
     def guess(self, char):

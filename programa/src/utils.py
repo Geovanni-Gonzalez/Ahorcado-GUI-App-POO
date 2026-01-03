@@ -19,22 +19,57 @@ FILES = {
 CURRENT_LANG = 'ES'
 SOUND_ON = True
 
-# Colors (Modern Dark Theme - Cyberpunk/Slate)
-COLORS = {
-    'BG_MAIN': '#0F172A',       # Deep Slate
-    'BG_GAME': '#1E293B',       # Lighter Slate for cards/areas
-    'BG_CARD': '#1E293B',       # Surface color
-    'TEXT': '#F8FAFC',          # Off-white text
-    'TEXT_LIGHT': '#94A3B8',    # Muted Blue-Grey
-    'HIGHLIGHT': '#00E5FF',     # Neon Cyan (Primary)
-    'HIGHLIGHT_DARK': '#00B8D4',# Darker Cyan
-    'ERROR': '#FF1744',         # Bright Red
-    'SUCCESS': '#00E676',       # Bright Green
-    'ACCENT': '#F50057',        # Neon Pink for hints/accents
-    'BTN_BG': '#334155',        # Slate for secondary buttons
-    'BTN_FG': '#F8FAFC',        # White text
-    'BTN_PRIMARY': '#00E5FF'    # Cyan for primary buttons
+# Colors
+THEMES = {
+    'DARK': {
+        'BG_MAIN': '#0F172A',       # Deep Slate
+        'BG_GAME': '#1E293B',       # Lighter Slate
+        'BG_CARD': '#1E293B',       # Surface
+        'TEXT': '#F8FAFC',          # Off-white
+        'TEXT_LIGHT': '#94A3B8',    # Muted Blue-Grey
+        'HIGHLIGHT': '#00E5FF',     # Neon Cyan
+        'HIGHLIGHT_DARK': '#00B8D4',
+        'ERROR': '#FF1744',         # Bright Red
+        'SUCCESS': '#00E676',       # Bright Green
+        'ACCENT': '#F50057',        # Neon Pink
+        'BTN_BG': '#334155',        # Slate
+        'BTN_FG': '#F8FAFC',        # White
+        'BTN_PRIMARY': '#00E5FF'    # Cyan
+    },
+    'LIGHT': {
+        'BG_MAIN': '#F0F4F8',       # Soft Cloud
+        'BG_GAME': '#FFFFFF',       # White
+        'BG_CARD': '#FFFFFF',
+        'TEXT': '#102A43',          # Deep Navy
+        'TEXT_LIGHT': '#627D98',    # Steel Blue
+        'HIGHLIGHT': '#3366FF',     # Vivid Blue
+        'HIGHLIGHT_DARK': '#1939B7',
+        'ERROR': '#D64545',         # Red
+        'SUCCESS': '#007D4F',       # Teal Green
+        'ACCENT': '#FF9F43',        # Orange
+        'BTN_BG': '#D9E2EC',        # Light Slate
+        'BTN_FG': '#102A43',        # Navy
+        'BTN_PRIMARY': '#3366FF'    # Blue
+    }
 }
+
+COLORS = THEMES['DARK'].copy()
+CURRENT_THEME = 'DARK'
+
+def get_current_theme():
+    return CURRENT_THEME
+
+def set_theme(name):
+    global CURRENT_THEME
+    if name in THEMES:
+        CURRENT_THEME = name
+        COLORS.clear()
+        COLORS.update(THEMES[name])
+
+def toggle_theme_logic():
+    new_theme = 'LIGHT' if CURRENT_THEME == 'DARK' else 'DARK'
+    set_theme(new_theme)
+    return new_theme
 
 # Fonts
 FONTS = {
