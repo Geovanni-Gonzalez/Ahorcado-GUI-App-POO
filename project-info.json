@@ -1,15 +1,16 @@
 {
+    "project": "Ahorcado GUI App POO",
     "tech": [
         "Python",
-        "Tkinter"
+        "Tkinter",
+        "Object-Oriented Design"
     ],
     "features": [
-        "Interfaz Gráfica (GUI) con Diseño Plano (Flat Design)",
-        "Modo PvP Local (Retador vs Adivinador)",
-        "Modo Contrarreloj (Time Attack 60s)",
-        "Sistema de Login seguro (Acceso.txt)",
-        "Módulo Administrativo CRUD completo",
-        "Soporte Bilingüe (Español/Inglés)"
+        "POO Architecture (Logic/View Separation)",
+        "Secure Login System (Acceso.txt)",
+        "Local Duelo & Blitz Game Modes",
+        "Advanced Administrative CRUD",
+        "Bilingual GUI (ES/EN)"
     ],
     "stack": {
         "language": "Python",
@@ -17,13 +18,15 @@
         "tools": [
             "Winsound",
             "Git",
-            "POO Architecture"
-        ]
+            "POO Design Patterns"
+        ],
+        "database": "Text-based Credentials System"
     },
-    "screenshots": ["https://raw.githubusercontent.com/Geovanni-González/Ahorcado-GUI-App-POO/main/screenshots/principalImage.jpg"],
-
+    "screenshots": [
+        "https://raw.githubusercontent.com/Geovanni-González/Ahorcado-GUI-App-POO/main/screenshots/principalImage.jpg"
+    ],
     "description": {
-        "es": "Versión orientada a objetos del juego Ahorcado. Implementa una arquitectura robusta separando lógica y presentación. Incluye características avanzadas como Duelo Local, Modo Blitz, y un sistema administrativo seguro, cumpliendo estrictos estándares de codificación sin funciones predefinidas.",
-        "en": "Object-Oriented version of the Hangman game. Implements a robust architecture separating logic and presentation. Includes advanced features like Local Duel, Blitz Mode, and a secure administrative system, adhering to strict coding standards without built-in functions."
+        "es": "Versión orientada a objetos del juego Ahorcado. Implementa una arquitectura robusta separando lógica y presentación, con sistema administrativo seguro y estándares de codificación estrictos.",
+        "en": "Object-Oriented version of the Hangman game. Implements a robust architecture separating logic and presentation, with a secure administrative system and strict coding standards."
     }
 }
