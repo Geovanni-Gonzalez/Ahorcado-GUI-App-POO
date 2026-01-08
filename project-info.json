@@ -1,32 +1,54 @@
 {
-    "project": "Ahorcado GUI App POO",
-    "tech": [
-        "Python",
-        "Tkinter",
-        "Object-Oriented Design"
-    ],
-    "features": [
-        "POO Architecture (Logic/View Separation)",
-        "Secure Login System (Acceso.txt)",
-        "Local Duelo & Blitz Game Modes",
-        "Advanced Administrative CRUD",
-        "Bilingual GUI (ES/EN)"
-    ],
-    "stack": {
-        "language": "Python",
-        "framework": "Tkinter",
-        "tools": [
-            "Winsound",
-            "Git",
-            "POO Design Patterns"
+    "en": {
+        "tech": [
+            "Python",
+            "Tkinter",
+            "OOP Design Patterns",
+            "Stateful GUI"
         ],
-        "database": "Text-based Credentials System"
+        "features": [
+            "Robust POO architecture with Logic/View separation",
+            "Secure administration system with detailed CRUD",
+            "Multiple game modes: Duelo and High-speed Blitz",
+            "Full bilingual support (English/Spanish)",
+            "Integrated sound effects and visual feedback"
+        ],
+        "stack": {
+            "language": "Python 3",
+            "framework": "Tkinter",
+            "tools": [
+                "Winsound",
+                "Unit Tests"
+            ],
+            "database": "Structured Text Files"
+        },
+        "screenshots": [],
+        "description": "A professional implementation of the classic Hangman game, focusing on architectural excellence and modern UI principles. This project utilizes rigorous Object-Oriented Design patterns to separate game logic from the graphical presentation, ensuring high maintainability and scalability. It features a cross-platform bilingual GUI, high-intensity game modes like 'Blitz', and a comprehensive administrative module, showcasing a deep understanding of state management and professional Python engineering."
     },
-    "screenshots": [
-        "https://raw.githubusercontent.com/Geovanni-González/Ahorcado-GUI-App-POO/main/screenshots/principalImage.jpg"
-    ],
-    "description": {
-        "es": "Versión orientada a objetos del juego Ahorcado. Implementa una arquitectura robusta separando lógica y presentación, con sistema administrativo seguro y estándares de codificación estrictos.",
-        "en": "Object-Oriented version of the Hangman game. Implements a robust architecture separating logic and presentation, with a secure administrative system and strict coding standards."
+    "es": {
+        "tech": [
+            "Python",
+            "Tkinter",
+            "Patrones de Diseño POO",
+            "GUI con Estado"
+        ],
+        "features": [
+            "Arquitectura POO robusta con separación Lógica/Vista",
+            "Sistema administrativo seguro con CRUD detallado",
+            "Múltiples modos de juego: Duelo y Blitz de alta velocidad",
+            "Soporte bilingüe completo (Inglés/Español)",
+            "Efectos de sonido integrados y retroalimentación visual"
+        ],
+        "stack": {
+            "language": "Python 3",
+            "framework": "Tkinter",
+            "tools": [
+                "Winsound",
+                "Pruebas Unitarias"
+            ],
+            "database": "Archivos de Texto Estructurados"
+        },
+        "screenshots": [],
+        "description": "Una implementación profesional del clásico juego del Ahorcado, centrada en la excelencia arquitectónica y los principios de diseño de UI modernos. Este proyecto utiliza patrones de diseño POO rigurosos para separar la lógica de juego de la presentación gráfica, garantizando alta mantenibilidad. Cuenta con una interfaz bilingüe, modos de juego de alta intensidad como 'Blitz' y un módulo administrativo completo, exhibiendo un profundo conocimiento de la ingeniería en Python."
     }
 }
