@@ -1,46 +1,69 @@
-# PROGRAMACIÓN II
+﻿# Ahorcado GUI App POO
 
-**Semestre:** I Semestre, 2026
+## Descripción
+Implementación del Ahorcado con interfaz Tkinter y organización orientada a objetos. Separa ventanas, componentes, lógica y datos.
 
-**Estudiante:** Geovanni González Aguilar
+## Objetivo
+Practicar POO aplicada a interfaces gráficas y gestión de estado de una aplicación desktop.
 
-**Estatus de la entrega:** Excelente
+## Tecnologías utilizadas
+- Python 3
+- Tkinter
+- POO
+- Archivos .txt
 
-## Descripción del Proyecto
+## Funcionalidades principales
+- Juego gráfico de Ahorcado
+- Gestión administrativa
+- Modos de juego e historial
+- Estructura modular de pantallas
 
-Implementación del juego del Ahorcado (Hangman) utilizando Python y las librerías gráficas Tkinter. El proyecto sigue el paradigma de Programación Orientada a Objetos (POO) y cumple con todos los requerimientos funcionales y administrativos solicitados.
+## Mi rol
+Diseñé la estructura POO, implementé pantallas y conecté componentes visuales con la lógica.
 
-## Estructura de Clases
+## Aprendizajes clave
+- POO aplicada a GUI
+- Gestión de estado
+- Reutilizacion de componentes
+- Organización por subpaquetes
 
-El proyecto se organiza en módulos claros:
-
-- `app.py`: Clase principal `App` (Hereda de `tk.Tk`) que gestiona la navegación entre frames.
-- `admin.py`: Clases `AdminFrame` y `MgmtFrame` para la gestión administrativa.
-- `player.py`: Clases `NewGameFrame` y `GameFrame` para la lógica de juego del usuario.
-- `logic.py`: Módulo auxiliar para lógica de negocio y persistencia.
-- `utils.py`: Constantes, configuraciones y utilidades de sistema.
-
-## Funcionalidades
-
-1. **Administración**:
-    - Control de acceso seguro mediante contraseña en `Acceso.txt`.
-    - Gestión completa (CRUD) de Palabras y Frases.
-    - Validación de duplicados y uso.
-2. **Juego**:
-    - Modos Principiante (Palabras) y Avanzado (Frases).
-    - Sistema de puntuación y pistas.
-    - Interfaz gráfica amigable.
-3. **Innovaciones**:
-    - **Blitz Mode**: Juego con temporizador de 60 segundos.
-    - **PvP Mode**: Modo duelo local.
-    - **Efectos**: Sonido y partículas.
-
-## Ejecución
-
-Para iniciar el programa, ejecute el siguiente comando desde la carpeta raíz del proyecto:
-
+## Instalación y ejecución
 ```bash
-python programa/main.py
+cd Ahorcado-GUI-App-POO/programa
+python main.py
 ```
 
-Asegúrese de tener instaladas las librerías estándar de Python. No se requieren instalaciones externas (pip).
+## Estructura del proyecto
+- programa/main.py: entrada
+- programa/src/gui/: pantallas
+- programa/src/logic.py: reglas
+- programa/data/: datos
+
+## Capturas o demo
+![Captura principal](screenshots/principalImage.png)
+
+## Estado del proyecto
+Proyecto académico funcional.
+
+## Valor técnico demostrado
+Muestra diseño modular, uso de POO y construccion de interfaces desktop.
+
+## Mejoras futuras
+- Agregar pruebas
+- Mejorar empaquetado
+- Incluir guía visual
+
+## Autor
+Geovanni González  
+Estudiante de Ingeniería en Computación  
+GitHub: [Geovanni-Gonzalez](https://github.com/Geovanni-Gonzalez)
+
+
+
+
+
+
+
+
+
+
